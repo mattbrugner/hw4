@@ -12,9 +12,11 @@ class PostsController < ApplicationController
     def create
       if @current_user
         @post = Post.new(params["post"])
-        @post.user_id = @current_user.id
+        @post.user_id = session[:user_id]
         @post.save
       else
         flash[:notice] = "Login first."
+        redirect_to "/users/new"
       end
+    end
 end
