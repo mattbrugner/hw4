@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params["id"])
+  end
+  
   def new
     @user = User.new
   end
@@ -7,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(params["user"])
     @user.password = BCrypt::Password.create(params["user"]["password"])
     @user.save
-  flash[:notice] = "Sign in with your new account" 
-  redirect_to "/sessions/new"
+    flash[:notice] = "Sign in with your new account" 
+    redirect_to "/users/#{@user.id}"
   end
 end
