@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     @post.place_id = params["place_id"]
   end
 
+  def show
+    @place = Place.find(params[:id])
+  end
+  
     def create
       if @current_user
         @post = Post.new(params["post"])
