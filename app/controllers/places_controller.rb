@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
       redirect_to "/places"
     else
       flash[:notice] = "Login first."
-      redirect_to "/sessions/new"
     end
+    redirect_to "/sessions/new"
   end
 end
